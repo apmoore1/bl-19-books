@@ -13,7 +13,7 @@ python geonames_name_only.py
 
 This script extracts all country and city names from geonames name list including all alternative names and saves just the names to the file `./CountriesNamesAlt.txt` (this file will be around 245MB).
 
-[The British Library 19th Century Book metadata](https://data.bl.uk/digbks/DB21.html) can be found in this repository [./book_data.json](./book_data.json) due to it be only 12.5MB.
+[The British Library 19th Century Book metadata](https://data.bl.uk/digbks/DB21.html) can be found in this repository [./book_data.zip](./book_data.zip) due to it be only 13MB. This file needs to be unzip into a file called `./book_data.json`.
 
 ## Analysis
 
