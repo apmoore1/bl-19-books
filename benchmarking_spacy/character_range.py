@@ -26,10 +26,38 @@ def page_generator(book_file: Path) -> Iterable[str]:
                 yield page[1]
 
 @app.command()
-def character_count(top_level_book_directory: Path, results_file: Path, 
-                    log_file: Path) -> None:
+def character_count(top_level_book_directory: Path = typer.Argument(..., exists=True, file_okay=False, dir_okay=True,
+                                                                    help="The directory that contains the book corpus (OCR text), after downloading it and un-compressing it, should be called `json` "), 
+                    results_file: Path = typer.Argument(..., help="File to store the output of this script in JSON format."), 
+                    log_file: Path = typer.Argument(..., help="Log file which will generate on each new line the number of directories within `top_level_book_directory` that have been processed, a directory is processed if all files within that direcotry have been processed.")) -> None:
+    '''
+    This script will find the maximum size length page per book, for each book 
+    in the `top_level_book_directory`. The `result_file` will contain that 
+    following JSON data:
+
+    The file contains one JSON object which has 4 keys, of which each value in 
+    all 4 keys is a JSON array of the same length, whereby the index of each array 
+    link to each e.g. the value at index 1 of "book_name" is the book name of 
+    the "max_page_characters" value at index 1:
+
+    1. "book_directory" -- The name of the parent directory that book file came 
+    from e.g. `0007`.
     
-    # logs to stdout
+    2. "book_name" -- The file name of the book, from the book name you 
+    can get the books volume in this case it is `01`, each volume links to the 
+    same meta data identifier, in this case `000741339` 
+    e.g. `000741339_01_text`
+    
+    3. "meta_data_identifier" -- The unique identifier that links the book file 
+    to the book record in the meta data. In the meta data this is called the 
+    `identifier` e.g. `000741339`
+    
+    4. "max_page_characters" -- The number of characters in the longest page.
+
+    A note, the `log_file` is created for debugging purposes, once the script 
+    has successfully completed this `log_file` can be deleted.
+    '''
+    
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
     fh = logging.FileHandler(log_file)
