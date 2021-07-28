@@ -6,3 +6,6 @@ CountriesNamesAlt.txt
 __pycache__
 benchmarking_spacy/character_log.txt
 benchmarking_fasttext/fasttext_models
+language_identification/large_model.bin
+language_identification/.large_model.bin.swp
+language_identification/output.json
