@@ -14,7 +14,15 @@ As the page with the largest number of characters in the whole book corpus is ro
 
 **Note on the transformer model**, as can be seen from the [total memory](#total-memory-used) used metric, the transformer model does not use anymore memory with larger batch sizes compared to the other models. This I thought was unusual as you expect the larger batch sizes to use more memory, like the other models show. For the transformers models this can be explained by this [blog post](https://explosion.ai/blog/spacy-transformers#batching), whereby they state that they split the input into sentences and batch by a set number of tokens each time, and if the sentence is longer than the transformers maximum sentence length (I think for [RoBERTa this 512, section 2.4 of the paper](https://arxiv.org/pdf/1907.11692.pdf), RoBERTa default model used in spacy) then the sentence gets truncated to the first 512 tokens. 
 
+## Downloading spacy models
 
+Before being able to run either the [./benchmark_spacy.py](./benchmark_spacy.py), or [./benchmark_spacy_runner.py](./benchmark_spacy_runner.py) scripts you will need to download the [4 English spacy models](https://spacy.io/models/en). If you run a linux machine this can be done using the [./download_all_english_models.sh script](./download_all_english_models.sh) like so:
+
+``` bash
+bash download_all_english_models.sh
+```
+
+Otherwise you can copy the commands within that [script](./download_all_english_models.sh) and run them in your own operating system terminal.
 
 ## Metrics
 

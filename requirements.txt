@@ -4,3 +4,7 @@ typer
 colorama
 tabulate
 spacy-nightly==3.0.0rc1
+pybind11==2.7.0
+fasttext==0.9.2
+langcodes==3.1.0
+language-data==1.0

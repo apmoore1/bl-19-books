@@ -5,3 +5,4 @@ CountriesNamesAlt.txt
 0118
 __pycache__
 benchmarking_spacy/character_log.txt
+benchmarking_fasttext/fasttext_models
