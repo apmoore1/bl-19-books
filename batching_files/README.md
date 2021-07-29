@@ -8,3 +8,12 @@ The command below creates the file [./id_date_meta_data.json](./id_date_meta_dat
 ``` bash
 python extract_id_date_meta_data.py ../book_data.json ./id_date_meta_data.json
 ```
+
+
+## Testing
+
+The [./filtering_files_by_decade.py script](./filtering_files_by_decade.py) has been fully tested. To run the test:
+
+``` bash
+python -m pytest
+```
