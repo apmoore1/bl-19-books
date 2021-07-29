@@ -151,3 +151,10 @@ The breakdown of the performance of different models can be found at:
 
 1. For the 4 English Spacy models: [./benchmarking_spacy](./benchmarking_spacy/). In this analysis we also found how long the longest page is, based on number of characters, roughly 11,000 words. License of all spacy models is [MIT](https://opensource.org/licenses/MIT).
 2. For the FastText language identification small and large models: [./benchmarking_fasttext](./benchmarking_fasttext). License for all tested FastText models is [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+
+Based on these performances we are going to use:
+
+1. Medium Spacy model for the NLP pipeline.
+2. Large FastText model for the language identification.
+
+In this project we are focusing on English text's therefore we are first going to process the text with the language identification model to find the English texts. For more details on how we processed the text using the language identification model see the [./language_identification folder](./language_identification).

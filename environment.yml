@@ -11,3 +11,4 @@ dependencies:
   - colorama==0.4.4
   - tabulate==0.8.9
   - pybind11==2.7.0
+  - pytest
