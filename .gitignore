@@ -3,6 +3,7 @@ book_data.json
 allCountries*
 CountriesNamesAlt.txt
 0118
+!batching_files/test_data/book_folder/0118
 __pycache__
 benchmarking_spacy/character_log.txt
 benchmarking_fasttext/fasttext_models
