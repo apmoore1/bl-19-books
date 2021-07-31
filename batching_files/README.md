@@ -18,7 +18,7 @@ As we now have a list of filenames we can batch these files into folders of file
 python batch_files.py 300 ../json/ ./1890_file_names.txt ../1890_books
 ```
 
-As expected this has created 48 sub folders (14281/300 = 47.6), when processing on the HEC we will hope to get 47 nodes (*M=48*). For reference `../1890_books` folder now contains 17GB of JSON.
+As expected this has created 48 sub folders (14281/300 = 47.6), when processing on the HEC we will hope to get 48 nodes (*M=48*). For reference `../1890_books` folder now contains 17GB of JSON.
 
 ## ID, Date, Meta data file (./id_date_meta_data.json)
 
