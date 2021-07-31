@@ -47,7 +47,7 @@ Else if you are using another Operating System you can download them and change 
 
 ## Metrics
 
-To test how quick the large and small model can process 11,000 tokens, we run the [./benchmark_fasttext.py script](./benchmark_fasttext.py script) with both the large and small model inputs like so:
+To test how quick the large and small model can process 11,000 tokens, we run the [./benchmark_fasttext.py script](./benchmark_fasttext.py) with both the large and small model inputs like so:
 
 ``` bash
 python benchmark_fasttext.py fasttext_models/large_model.bin large
