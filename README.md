@@ -142,6 +142,8 @@ JSON
 
 It takes around 95-100 seconds to process 3.7MB of data, of which there is 81GB of data. It can process this data at around 8000 Words per second. Based on file size 3.7MB is around 22,000 times smaller than the whole corpus. Based on this 100 seconds multiplied by 22,000 is roughly 611.1 hours which is around 25.5 days.
 
+When processing the 1890 books (~14280 books) the [large FastText language identification model](https://fasttext.cc/docs/en/language-identification.html) managed to process a book in 1.2 seconds.
+
 
 ### Processing pipeline
 
