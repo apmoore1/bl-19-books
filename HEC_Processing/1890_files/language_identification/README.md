@@ -38,3 +38,15 @@ As each batch will have it's own results file we need to combine all of the resu
 ``` bash
 python combine_language_id_results.py ./language_id_results ./language_results_1890.json
 ```
+
+### Analysis of the combined results
+
+THe analysis can be see in the [./language_analysis.ipynb notebook](./language_analysis.ipynb).
+
+Main takeaways from the analysis:
+
+1. 79.96% of books are English, 7.19% is French, and 5.58% is German.
+2. 8 books which have more than one volume have 2 different languages identified in different volumes of the same book.
+3. On average each book contain *300* pages. If we multiply this by 300 to get the number of pages per batch, which is *9000*, this means that if we take the worse processing time on the HEC of 360 seconds, the HEC managed to process a page in *0.004* of a second and a book in *1.2* seconds.
+4. Some books have only one page, of which these books do have only one page, as verified by Andrew through exploring the British Library catalogue online.
+5. The number of pages in a book does not affect the overall distribution of the identified languages. However this does not mean that books with more or less pages are easier to language identify.
