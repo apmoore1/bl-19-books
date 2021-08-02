@@ -15,7 +15,7 @@ This will then output all the relative file names to all books from the 1890's o
 As we now have a list of filenames we can batch these files into folders of files where each folder contain no more than *N* files. This batching into separate folders will come in useful when it comes to processing these files, as each computer/node can process a folder of files and the more node's we have the faster all of the files will be processed, ideally we would have *M* nodes whereby *M* equals the number of folders we have batched the files into. When processing these on Lancaster's HEC we will request off the HEC as many nodes as possible at one time up to *M* nodes.
 
 ```
-python batch_files.py 300 ../json/ ./1890_file_names.txt ../1890_books
+python batch_files.py 300 DIRECTORY_TO_BOOKS ./1890_file_names.txt ../1890_books
 ```
 
 As expected this has created 48 sub folders (14281/300 = 47.6), when processing on the HEC we will hope to get 48 nodes (*M=48*). For reference `../1890_books` folder now contains 17GB of JSON.
@@ -41,6 +41,14 @@ To do this run the following script
 ``` bash
 python filtering_files.py --language=english ./id_date_language_meta_data.json DIRECTORY_TO_BOOKS ./1890_english_file_names.txt
 ```
+
+### batching
+
+```
+python batch_files.py 300 DIRECTORY_TO_BOOKS ./1890_english_file_names.txt ../1890_english_books
+```
+
+As expected this has created 39 sub folders (11419/300 = 38.06), when processing on the HEC we will hope to get 39 nodes (*M=39*). For reference `../1890_english_books` folder now contains 13GB of JSON.
 
 ## ID, Date, Meta data file (./id_date_meta_data.json)
 
