@@ -1,6 +1,6 @@
 # Language Identification
 
-We explain here how we identify the language of a British Library book based on the [FastText language identification models](https://fasttext.cc/docs/en/language-identification.html). THer language is identified through the [./language_id.py script](./language_id.py) which is explained best below: (below is a better formatted version of the help from the script generated through `python language_id.py --help`):
+We explain here how we identify the language of a British Library book based on the [FastText language identification models](https://fasttext.cc/docs/en/language-identification.html). The language is identified through the [./language_id.py script](./language_id.py) which is explained best below: (below is a better formatted version of the help from the script generated through `python language_id.py --help`):
 
 ``` bash
 Usage: language_id.py [OPTIONS] MODEL_PATH FILE_TO_PROCESS OUTPUT_FILE
