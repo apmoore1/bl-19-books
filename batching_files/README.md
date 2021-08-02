@@ -5,10 +5,14 @@
 To do this run the following script:
 
 ``` bash
-python filtering_files_by_decade.py 1890 ./id_date_meta_data.json DIRECTORY_TO_BOOKS ./1890_file_names.txt
+python filtering_files.py --decade 1890 ./id_date_meta_data.json DIRECTORY_TO_BOOKS ./1890_file_names.txt
 ```
 
 This will then output all the relative file names to all books from the 1890's on each new line to the [./1890_file_names.txt file](./1890_file_names.txt). This file contain *14,281* file names.
+
+``` bash
+python filtering_files.py --language=english ./id_language_meta_data.json DIRECTORY_TO_BOOKS ./1890_english_file_names.txt
+```
 
 ### Batching
 
