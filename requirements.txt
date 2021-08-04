@@ -3,7 +3,8 @@ pandas
 typer
 colorama
 tabulate
-spacy-nightly==3.0.0rc1
+spacy==3.1.0
+https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.1.0/en_core_web_md-3.1.0.tar.gz#egg=en_core_web_md
 pybind11==2.7.0
 git+https://github.com/facebookresearch/fastText.git@a20c0d27cd0ee88a25ea0433b7f03038cd728459
 langcodes==3.1.0
