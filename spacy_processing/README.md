@@ -80,7 +80,7 @@ the  `components_to_include`
 We shall use one of the tests case as an example. Running the following:
 
 ``` bash
-python spacy_tagging.py ./test_data/book_folder/ ./test_data/expected_output/ -i ner -i tagger -i lemma
+python spacy_tagging.py ./test_data/book_folder/ ./test_data/expected_output/ -i ner -i tagger -i lemmatizer
 ```
 
 Will produce the output found in [./test_data/expected_output/](./test_data/expected_output/) from the files within [./test_data/book_folder/](./test_data/book_folder/).
