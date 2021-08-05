@@ -1,0 +1,12 @@
+token	lemma	pos	ner	page
+<quality value="0.7143" />
+<token count="8" />
+<book identifier="test" />
+Test	test	NN		1
+OCR	OCR	NNP		1
+quality	quality	NN		1
+with	with	IN		1
+sooooooommmmmmeeeee	sooooooommmmmmeeeee	NN		1
+awwwwwfffful	awwwwwfffful	JJ		1
+spelling	spelling	NN		1
+.	.	.		1

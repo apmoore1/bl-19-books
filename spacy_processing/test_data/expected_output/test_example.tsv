@@ -1,0 +1,23 @@
+token	lemma	pos	ner	page
+<quality value="1.0" />
+<token count="19" />
+<book identifier="test" />
+This	this	DT		1
+is	be	VBZ		1
+some	some	DT		1
+text	text	NN		1
+to	to	TO		1
+test	test	VB		1
+if	if	IN		1
+the	the	DT		1
+system	system	NN		1
+works	work	VBZ		1
+correctly	correctly	RB		1
+.	.	.		1
+Here	here	RB		2
+is	be	VBZ		2
+an	an	DT		2
+extra	extra	JJ		2
+test	test	NN		2
+London	London	NNP	GPE	2
+.	.	.		2
