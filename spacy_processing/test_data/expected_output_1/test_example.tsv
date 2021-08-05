@@ -1,0 +1,23 @@
+token	pos	ner	page
+<quality value="1.0" />
+<token count="19" />
+<book identifier="test" />
+This	DT		1
+is	VBZ		1
+some	DT		1
+text	NN		1
+to	TO		1
+test	VB		1
+if	IN		1
+the	DT		1
+system	NN		1
+works	VBZ		1
+correctly	RB		1
+.	.		1
+Here	RB		2
+is	VBZ		2
+an	DT		2
+extra	JJ		2
+test	NN		2
+London	NNP	GPE	2
+.	.		2

@@ -1,0 +1,12 @@
+token	pos	ner	page
+<quality value="0.7143" />
+<token count="8" />
+<book identifier="test" />
+Test	NN		1
+OCR	NNP		1
+quality	NN		1
+with	IN		1
+sooooooommmmmmeeeee	NN		1
+awwwwwfffful	JJ		1
+spelling	NN		1
+.	.		1

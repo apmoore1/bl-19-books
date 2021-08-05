@@ -2,6 +2,8 @@ import tempfile
 from pathlib import Path
 import filecmp
 
+import pytest
+
 from spacy_tagging import process_text, ComponentNames
 
 def compare_files(file_1: Path, file_2: Path) -> None:
@@ -16,16 +18,21 @@ def compare_files(file_1: Path, file_2: Path) -> None:
             for index, line_1 in enumerate(lines_1):
                 assert line_1 == lines_2[index] 
 
-
-def test_process_text() -> None:
+@pytest.mark.parametrize("include_lemma", [False, True])
+def test_process_text(include_lemma: bool) -> None:
     test_data_dir = Path(__file__, '..', 'test_data').resolve()
     book_folder = Path(test_data_dir, 'book_folder')
-    expected_output_folder = Path(test_data_dir, 'expected_output')
+    expected_output_folder = Path(test_data_dir, 'expected_output_1')
+    if include_lemma:
+        expected_output_folder = Path(test_data_dir, 'expected_output')
 
     with tempfile.TemporaryDirectory() as tempdir:
         tempdir_path = Path(tempdir)
-        process_text(book_folder, tempdir_path, list(ComponentNames))
-
+        
+        if include_lemma:
+            process_text(book_folder, tempdir_path, list(ComponentNames))
+        else:
+            process_text(book_folder, tempdir_path, [ComponentNames.POS, ComponentNames.NER])
         test_files = list(tempdir_path.iterdir())
         assert 2 == len(test_files)
 
