@@ -18,15 +18,18 @@ def filter_files(meta_data_file: Path = typer.Argument(...,
                                                      file_okay=False,
                                                      help="The top level directory the books were downloaded to e.g. /home/json. In the root directory of this repositories README this is called the `DIRECTORY_TO_BOOKS`"), 
                  output_file: Path = typer.Argument(...,
-                                                    help="The file that will contain the relative file paths of all books that are in the given decade. The file paths will be relative to the `input_folder`. e.g. `0118/011833856_01_text.json`"),
+                                                    help="The file that will contain the relative file paths of all books that have been selected given the filters used. The file paths will be relative to the `input_folder`. e.g. `0118/011833856_01_text.json`"),
                  language: Optional[str] = typer.Option(None, help="(NOTE this is case in-sensitive) Filter by the language of that the book was written in e.g. english. The language name comes from the description tag of the BCP: 47 registry which can be found here: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry"),
-                 decade: Optional[int] = typer.Option(None, help="Filter by the decade the book was published e.g. 1890 or 1880.")
+                 decade: Optional[int] = typer.Option(None, help="Filter by the decade the book was published e.g. 1890 or 1880."),
                  ) -> None:
     '''
     Given a filter(s) such as decade and/or language it will find all books 
     that match the filtered criteria through the meta data, and copy the relative
     file path of that book from the `input_folder` and write it on a new line 
     in the `output_file`.
+
+    **NOTE** if you want to process all books and then use the batching script 
+    do not choose a filter and this will happen.
     '''
     if isinstance(language, str):
         language = language.lower()

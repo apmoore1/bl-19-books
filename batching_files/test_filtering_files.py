@@ -25,7 +25,7 @@ def test_filter_files() -> None:
                 assert file_name in file_names
         
         test_filters(["0118/011833856_01_text.json", "0118/011834197_01_text.json", 
-                           "0118/011834197_02_text.json"], decade=1880)
+                      "0118/011834197_02_text.json"], decade=1880)
         test_filters(["0000/000057124_01_text.json"], decade=1840)
 
         test_filters([], decade=1840, language="English")
@@ -33,5 +33,9 @@ def test_filter_files() -> None:
         test_filters(["0000/000057123_01_text.json"], language="German")
         test_filters(["0118/011834197_01_text.json", "0118/011834197_02_text.json"], 
                      decade=1880, language="French")
+
+        test_filters(["0118/011833856_01_text.json", "0118/011834197_01_text.json", 
+                      "0118/011834197_02_text.json",
+                      "0000/000057124_01_text.json", "0000/000057123_01_text.json"])
 
         

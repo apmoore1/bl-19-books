@@ -10,6 +10,12 @@ python filtering_files.py --decade 1890 ./id_date_meta_data.json DIRECTORY_TO_BO
 
 This will then output all the relative file names to all books from the 1890's on each new line to the [./1890_file_names.txt file](./1890_file_names.txt). This file contain *14,281* file names.
 
+To extract all files and not filter, so that you can then more efficently batch these files, run the following:
+
+```bash
+python filtering_files.py ./id_date_meta_data.json DIRECTORY_TO_BOOKS ./all_file_names.txt
+```
+
 ### Batching
 
 As we now have a list of filenames we can batch these files into folders of files where each folder contain no more than *N* files. This batching into separate folders will come in useful when it comes to processing these files, as each computer/node can process a folder of files and the more node's we have the faster all of the files will be processed, ideally we would have *M* nodes whereby *M* equals the number of folders we have batched the files into. When processing these on Lancaster's HEC we will request off the HEC as many nodes as possible at one time up to *M* nodes.
