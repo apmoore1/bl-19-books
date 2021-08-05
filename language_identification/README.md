@@ -40,22 +40,22 @@ It will write the following JSON to the `output_file`:
         }
     }
 
-    Whereby the Main language name could be English and the Minor language name 
-    could be Spanish for example. The count is based on the number of pages in 
-    the book that have been identified as that language. The proportion is the 
-    count of that language divided total number of pages with text e.g. 4/5 = 0.8.
-    The filename is the name of the `file_to_process` e.g. if the `file_to_process` is
-    /home/user/bl_book.json then the filename is `bl_book`.
+Whereby the Main language name could be English and the Minor language name 
+could be Spanish for example. The count is based on the number of pages in 
+the book that have been identified as that language. The proportion is the 
+count of that language divided total number of pages with text e.g. 4/5 = 0.8.
+The filename is the name of the `file_to_process` e.g. if the `file_to_process` is
+/home/user/bl_book.json then the filename is `bl_book`.
 
-    If the program cannot identify any language in the book file, for example if
-    the book file is empty then the JSON output will be:
+If the program cannot identify any language in the book file, for example if
+the book file is empty then the JSON output will be:
 
-    {
-        "filename": "file_name",
-        "language": null
-    } 
+{
+    "filename": "file_name",
+    "language": null
+} 
 
-    null will be equal to None in Python.
+null will be equal to None in Python.
 ```
 
 ## Example
