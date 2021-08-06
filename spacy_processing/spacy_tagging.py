@@ -2,7 +2,6 @@ import enum
 import json
 from typing import List, Dict, Iterable, Tuple
 from pathlib import Path
-from numpy import add
 
 import typer
 import en_core_web_md
