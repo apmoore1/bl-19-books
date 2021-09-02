@@ -1,3 +1,4 @@
+import csv
 import enum
 import json
 from typing import List, Dict, Iterable, Tuple
@@ -180,10 +181,10 @@ def process_text(book_folder: Path = typer.Argument(..., exists=True, dir_okay=T
         assert ocr_quality <= 1, ocr_quality_error
         
         output_file = Path(output_folder, f'{book_file_name}.tsv')
-        with output_file.open('w') as output_fp:
-            output_fp.write('\t'.join(attribute_order))
-            output_fp.write('\tpage')
-            output_fp.write('\n')
+        with output_file.open('w', newline='') as output_fp:
+            tsv_writer = csv.writer(output_fp, delimiter='\t')
+            headers = attribute_order + ['page']
+            tsv_writer.writerow(headers)
             output_fp.write(add_metadata("quality", "value", str(ocr_quality)))
             output_fp.write('\n')
             output_fp.write(add_metadata("token", "count", str(number_tokens)))
@@ -195,8 +196,7 @@ def process_text(book_folder: Path = typer.Argument(..., exists=True, dir_okay=T
                 for attribute in attribute_order:
                     token_values.append(token_data[attribute])
                 token_values.append(token_data['page'])
-                output_fp.write('\t'.join(token_values))
-                output_fp.write('\n')
+                tsv_writer.writerow(token_values)
             
 
 if __name__ == "__main__":
