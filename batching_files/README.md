@@ -10,11 +10,16 @@ python filtering_files.py --decade 1890 ./id_date_meta_data.json DIRECTORY_TO_BO
 
 This will then output all the relative file names to all books from the 1890's on each new line to the [./1890_file_names.txt file](./1890_file_names.txt). This file contain *14,281* file names.
 
-To extract all files and not filter, so that you can then more efficently batch these files, run the following:
+To extract all files and not filter, so that you can then more efficiently batch these files, run the following:
 
 ```bash
-python filtering_files.py ./id_date_meta_data.json DIRECTORY_TO_BOOKS ./all_file_names.txt
+python filtering_files.py ./book_data.json DIRECTORY_TO_BOOKS ./all_file_names.txt
 ```
+
+``` bash
+python batch_files.py 300 DIRECTORY_TO_BOOKS ./all_file_names.txt ../all_books
+```
+63985/300 = 213.28 creating 214 folders.
 
 ### Batching
 
