@@ -34,7 +34,7 @@ def test_process_text(include_lemma: bool) -> None:
         else:
             process_text(book_folder, tempdir_path, [ComponentNames.POS, ComponentNames.NER])
         test_files = list(tempdir_path.iterdir())
-        assert 2 == len(test_files)
+        assert 3 == len(test_files)
 
         
         expected_files = list(expected_output_folder.iterdir())
@@ -50,7 +50,6 @@ def test_process_text(include_lemma: bool) -> None:
                                                    str(tempdir_path), 
                                                    common_file_names, shallow=False)
         matches, mis_matches, errors = file_difference_results
-        assert 2 == len(matches)
+        assert 3 == len(matches)
         assert not mis_matches
         assert not errors
-

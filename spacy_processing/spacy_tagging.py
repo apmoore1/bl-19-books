@@ -24,10 +24,13 @@ def text_generator(book_file: Path) -> Iterable[Tuple[str, int]]:
               it will be skipped and therefore not yielded from this function.
     '''
     with book_file.open('r') as fp:
-        data = json.load(fp)
-        for page in data:
-            if page[1].strip():
-                yield (page[1], int(page[0]))
+        try:
+            data = json.load(fp) # Error can occur here if no data is given 
+            for page in data:
+                if page[1].strip():
+                    yield (page[1], int(page[0]))
+        except json.decoder.JSONDecodeError:
+            yield ('', 0)
 
 def component_to_attribute_mapper() -> Dict[str, str]:
     return {'token': 'token', 'ner': 'ner', 'tagger': 'pos', 'lemmatizer': 'lemma'}
