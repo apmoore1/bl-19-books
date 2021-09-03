@@ -11,5 +11,6 @@ language_identification/large_model.bin
 language_identification/.large_model.bin.swp
 language_identification/output.json
 HEC_Processing/1890_files/language_identification/language_id_results
+HEC_Processing/language_identification/language_id_results
 job-monitor.com
 lexidb_result_dir
