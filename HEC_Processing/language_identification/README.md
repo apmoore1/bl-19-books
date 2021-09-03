@@ -4,7 +4,7 @@
 
 We assume that all of the British Library books are stored in the following folder on the HEC: `$global_scratch/all_books` and have been created through the batching script explained in the `batching files README`. This directory should have 214 sub-folders each with at most 300 book files.
 
-Before running any script we will need to crate a custom Conda environment so that we have a Python environment that has all of the relevant requirements, this Conda environment will be saved at `$global_storage/conda_environments/py3.8-bl-language-id` on the HEC. Additionally we need to download the [large FastText language id model](https://fasttext.cc/docs/en/language-identification.html), this model will be saved at `$global_storage/bl-books-models/large-language-id.bin` on the HEC whereby the directory it is saved too `$global_storage/bl-books-models` will be created with this installation script. Lastly we will create another directory at `$global_scratch/all_books_language_id_results`, which will contain all of the results will from running the [./language_id.py script](./language_id.py script). All of this is done when you run the following command on the HEC:
+Before running any script we will need to crate a custom Conda environment so that we have a Python environment that has all of the relevant requirements, this Conda environment will be saved at `$global_storage/conda_environments/py3.8-bl-language-id` on the HEC. Additionally we need to download the [large FastText language id model](https://fasttext.cc/docs/en/language-identification.html), this model will be saved at `$global_storage/bl-books-models/large-language-id.bin` on the HEC whereby the directory it is saved too `$global_storage/bl-books-models` will be created with this installation script. Lastly we will create another directory at `$global_scratch/all_books_language_id_results`, which will contain all of the results will from running the [./language_id.py script](./language_id.py). All of this is done when you run the following command on the HEC:
 
 ``` bash
 qsub install.com
@@ -12,9 +12,9 @@ qsub install.com
 
 ## Running the language ID script
 
-The [./language_id.py script](./language_id.py script) is the same script as [../../../language_identification/language_id.py](../../../language_identification/language_id.py), which has been fully tested. The reason for duplicating the script within this directory is so that we can easily copy this directory to the HEC and run the script without having to copy files from different directories.
+The [./language_id.py script](./language_id.py) is the same script as [../../../language_identification/language_id.py](../../../language_identification/language_id.py), which has been fully tested. The reason for duplicating the script within this directory is so that we can easily copy this directory to the HEC and run the script without having to copy files from different directories.
 
-To run the [./language_id.py script](./language_id.py script) over all files in all batches within `$global_scratch/all_books` run the following command on the HEC:
+To run the [./language_id.py script](./language_id.py) over all files in all batches within `$global_scratch/all_books` run the following command on the HEC:
 
 ``` bash
 qsub language_id.com
@@ -41,7 +41,7 @@ python combine_language_id_results.py ./language_id_results ./language_results.j
 
 ### Analysis of the combined results
 
-THe analysis can be see in the [./language_analysis.ipynb notebook](./language_analysis.ipynb).
+The analysis can be see in the [./language_analysis.ipynb notebook](./language_analysis.ipynb).
 
 Main takeaways from the analysis:
 
