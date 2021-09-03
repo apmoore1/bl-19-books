@@ -151,7 +151,7 @@ As we are going to run various NLP tools on Lancaster's High End Computing (HEC)
 
 The breakdown of the performance of different models can be found at:
 
-1. For the 4 English Spacy models: [./benchmarking_spacy](./benchmarking_spacy/). In this analysis we also found how long the longest page is, based on number of characters, roughly 11,000 words. License of all spacy models is [MIT](https://opensource.org/licenses/MIT).
+1. For the 4 English Spacy models: [./benchmarking_spacy](./benchmarking_spacy/). In this analysis we also found how long the longest page is, based on number of characters, roughly 11,000 words. Even though these benchmarks are a good guide for a better estimation on the time it would take to run Spacy on the whole British Library corpus see the `More Real World Benchmarking` section in [./spacy_processing](./spacy_processing). License of all spacy models is [MIT](https://opensource.org/licenses/MIT).
 2. For the FastText language identification small and large models: [./benchmarking_fasttext](./benchmarking_fasttext). License for all tested FastText models is [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 
 Based on these performances we are going to use:
@@ -159,4 +159,12 @@ Based on these performances we are going to use:
 1. Medium Spacy model for the NLP pipeline.
 2. Large FastText model for the language identification.
 
-In this project we are focusing on English text's therefore we are first going to process the text with the language identification model to find the English texts. For more details on how we processed the text using the language identification model see the [./language_identification folder](./language_identification).
+In this project as we are only focusing on the English Language we are first going to process the texts using the Language Identification model and then the NLP pipeline.
+
+#### Language ID
+
+In this project we are focusing on English text's therefore we are first going to process the text with the language identification model to find the English texts. For more details on how we processed the text using the language identification model see the [./language_identification folder](./language_identification). 
+
+#### NLP Pipeline
+
+Once we have extracted all of the English text's we ran them through the Spacy NLP pipeline. For more details on how we processed the text using the Spacy pipeline see the [./spacy_processing folder](./spacy_processing folder).

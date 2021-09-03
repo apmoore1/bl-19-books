@@ -85,7 +85,79 @@ python spacy_tagging.py ./test_data/book_folder/ ./test_data/expected_output/ -i
 
 Will produce the output found in [./test_data/expected_output/](./test_data/expected_output/) from the files within [./test_data/book_folder/](./test_data/book_folder/).
 
+## More Real World Benchmarking
 
+Even though we have benchmarked the various Spacy models and components within [../benchmarking_spacy](../benchmarking_spacy), this benchmark is a more realistic guesstimate of how long the task may take in time. However the benchmarks within [../benchmarking_spacy](../benchmarking_spacy) are still relevant as they test the spacy models when given the largest text input which is a good estimate on the maximum amount of memory (RAM) required to process the British Library Book corpus.
+
+To run the benchmarking (**NOTE** this does not need re-running) and process the results:
+
+``` bash
+python benchmark_spacy_runner.py
+python analyse_results.py
+```
+
+The results are shown below, note that the spaCy model used is the medium model. Units are seconds for time, MB for memory, and hours for whole corpus processing time. The time predict to run on the whole corpus is based on the average book/volume containing 325 pages and the book corpus containing 63,984 volumes, as shown in this [analysis](../HEC_Processing/language_identification/language_analysis.ipynb):
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Whole Corpus Processing Time (Hours)</th>
+      <th>time (S)</th>
+      <th>total memory (MB)</th>
+    </tr>
+    <tr>
+      <th>components</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>tagger</th>
+      <td>14928.132</td>
+      <td>25.844</td>
+      <td>314.212</td>
+    </tr>
+    <tr>
+      <th>lemmatizer</th>
+      <td>15174.949</td>
+      <td>26.271</td>
+      <td>322.904</td>
+    </tr>
+    <tr>
+      <th>ner</th>
+      <td>15115.637</td>
+      <td>26.168</td>
+      <td>312.004</td>
+    </tr>
+    <tr>
+      <th>tagger,lemmatizer</th>
+      <td>15005.113</td>
+      <td>25.977</td>
+      <td>322.896</td>
+    </tr>
+    <tr>
+      <th>ner,tagger</th>
+      <td>15034.287</td>
+      <td>26.027</td>
+      <td>312.064</td>
+    </tr>
+    <tr>
+      <th>ner,lemmatizer</th>
+      <td>14980.288</td>
+      <td>25.934</td>
+      <td>319.148</td>
+    </tr>
+    <tr>
+      <th>ner,tagger,lemmatizer</th>
+      <td>15219.833</td>
+      <td>26.349</td>
+      <td>319.016</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Testing
 

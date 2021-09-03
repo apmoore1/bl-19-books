@@ -144,59 +144,58 @@ def process_text(book_folder: Path = typer.Argument(..., exists=True, dir_okay=T
         
         # Collecting token level data including the page number the tokens came 
         # from.
-        output_data: List[Dict[str, str]] = []
+        import tempfile
         number_tokens = 0
         number_tokens_excluding_punctuation = 0
         number_tokens_found_in_dictionary = 0
-        for spacy_doc, page_number in nlp.pipe(text_generator(book_file), 
-                                               as_tuples=True, batch_size=1):
-            
-            for spacy_token in spacy_doc:
-                if spacy_token.is_space:
-                        continue
-                if not spacy_token.is_punct:
-                    number_tokens_excluding_punctuation += 1
-                    if spacy_token.text.lower() in vocab_strings:
-                        number_tokens_found_in_dictionary += 1
+        with tempfile.NamedTemporaryFile('w+', newline='') as temp_file:
+            temp_tsv_writer = csv.writer(temp_file, delimiter='\t')
+            for spacy_doc, page_number in nlp.pipe(text_generator(book_file), 
+                                                as_tuples=True, batch_size=1):
                 
-                number_tokens += 1
-                token_data: Dict[str, str] = {}
-                for attribute in attribute_order:
-                    spacy_attribute = attributes_to_spacy_tags[attribute]
-                    token_data[attribute] = getattr(spacy_token, spacy_attribute)
-                token_data['page'] = str(page_number)
-                output_data.append(token_data)
+                for spacy_token in spacy_doc:
+                    if spacy_token.is_space:
+                            continue
+                    if not spacy_token.is_punct:
+                        number_tokens_excluding_punctuation += 1
+                        if spacy_token.text.lower() in vocab_strings:
+                            number_tokens_found_in_dictionary += 1
+                    
+                    number_tokens += 1
+                    token_values = []
+                    for attribute in attribute_order:
+                        spacy_attribute = attributes_to_spacy_tags[attribute]
+                        token_values.append(getattr(spacy_token, spacy_attribute))
+                    token_values.append(str(page_number))
+                    temp_tsv_writer.writerow(token_values)
+                
             
-        
-        # Getting the identifier of the book
-        book_file_name = book_file.stem
-        book_identifier = book_file_name.split('_')[0]
+            # Getting the identifier of the book
+            book_file_name = book_file.stem
+            book_identifier = book_file_name.split('_')[0]
 
-        # Get the OCR noise level of the book, higher the quality the better.
-        ocr_quality = 0
-        if number_tokens_excluding_punctuation != 0:
-            ocr_quality = round(number_tokens_found_in_dictionary / number_tokens_excluding_punctuation, 4)
-        ocr_quality_error = ("OCR Quality should never be above 1.0, currently"
-                             f" {ocr_quality}, book file: {book_file}")
-        assert ocr_quality <= 1, ocr_quality_error
-        
-        output_file = Path(output_folder, f'{book_file_name}.tsv')
-        with output_file.open('w', newline='') as output_fp:
-            tsv_writer = csv.writer(output_fp, delimiter='\t')
-            headers = attribute_order + ['page']
-            tsv_writer.writerow(headers)
-            output_fp.write(add_metadata("quality", "value", str(ocr_quality)))
-            output_fp.write('\n')
-            output_fp.write(add_metadata("token", "count", str(number_tokens)))
-            output_fp.write('\n')
-            output_fp.write(add_metadata("book", "identifier", str(book_identifier)))
-            output_fp.write('\n')
-            for token_data in output_data:
-                token_values = []
-                for attribute in attribute_order:
-                    token_values.append(token_data[attribute])
-                token_values.append(token_data['page'])
-                tsv_writer.writerow(token_values)
+            # Get the OCR noise level of the book, higher the quality the better.
+            ocr_quality = 0
+            if number_tokens_excluding_punctuation != 0:
+                ocr_quality = round(number_tokens_found_in_dictionary / number_tokens_excluding_punctuation, 4)
+            ocr_quality_error = ("OCR Quality should never be above 1.0, currently"
+                                f" {ocr_quality}, book file: {book_file}")
+            assert ocr_quality <= 1, ocr_quality_error
+            
+            output_file = Path(output_folder, f'{book_file_name}.tsv')
+            with output_file.open('w', newline='') as output_fp:
+                tsv_writer = csv.writer(output_fp, delimiter='\t')
+                headers = attribute_order + ['page']
+                tsv_writer.writerow(headers)
+                output_fp.write(add_metadata("quality", "value", str(ocr_quality)))
+                output_fp.write('\n')
+                output_fp.write(add_metadata("token", "count", str(number_tokens)))
+                output_fp.write('\n')
+                output_fp.write(add_metadata("book", "identifier", str(book_identifier)))
+                output_fp.write('\n')
+                temp_file.seek(0)
+                for line in temp_file:
+                    output_fp.write(line)
             
 
 if __name__ == "__main__":
