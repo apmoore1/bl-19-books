@@ -138,13 +138,6 @@ JSON
 [[1, ""], [2, ""], [3, ""], [4, ""], [5, "REPORT ON THE KOLAR GOLD FIELD AND ITS SOUTHERN EXTENSION, IN WHICH THE AURIFEROUS ROCKS ARE TRACED FROM THE MYSORE STATE INTO THE MADRAS PRESIDENCY. WITH MAPS AND SKETCHES. BY P. BOSWORTH-SMITR^Esq., F.G.S., ASSOCIATE Or THE ROYAL SCHOOL OF MINES (BESSEMER MEDALLIST), AND GOVERNMENT MINERALOGIST TO THE MADRAS PRESIDENCY. MADRAS: PRINTED BY THE SUPERINTENDENT, GOVERNMENT PRESS. 1889."], [6, ""]
 ```
 
-### Processing speed
-
-It takes around 95-100 seconds to process 3.7MB of data, of which there is 81GB of data. It can process this data at around 8000 Words per second. Based on file size 3.7MB is around 22,000 times smaller than the whole corpus. Based on this 100 seconds multiplied by 22,000 is roughly 611.1 hours which is around 25.5 days.
-
-When processing the 1890 books (~14280 books) the [large FastText language identification model](https://fasttext.cc/docs/en/language-identification.html) managed to process a book in 1.2 seconds.
-
-
 ### Processing pipeline
 
 As we are going to run various NLP tools on Lancaster's High End Computing (HEC) cluster we need to know some statistics on runtime performance of these tools, more specifically the [spaCy models](https://spacy.io/models/en) for the main NLP pipeline e.g. tokenization, Part Of Speech (POS) tagging etc and the [FastText models](https://fasttext.cc/docs/en/language-identification.html) for language identification. We need to know how much time and memory each model will take on a text. Knowing how long it will take (time) will allow us to determine roughly how long it will take to process all of the texts. Knowing the memory requirement is important as the HEC requires us to state up front before submitting a script to run how much memory is required to run the script.
