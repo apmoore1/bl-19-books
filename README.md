@@ -156,8 +156,10 @@ In this project as we are only focusing on the English Language we are first goi
 
 #### Language ID
 
-In this project we are focusing on English text's therefore we are first going to process the text with the language identification model to find the English texts. For more details on how we processed the text using the language identification model see the [./language_identification folder](./language_identification). 
+In this project we are focusing on English text's therefore we are first going to process the text with the language identification model to find the English texts. For more details on how we processed the text using the language identification model see the [./language_identification folder](./language_identification). For details on how the whole of the British Library books data was processed including analysis and the language ID output see [./HEC_Processing/language_identification](./HEC_Processing/language_identification).
 
 #### NLP Pipeline
 
-Once we have extracted all of the English text's we ran them through the Spacy NLP pipeline. For more details on how we processed the text using the Spacy pipeline see the [./spacy_processing folder](./spacy_processing folder).
+Once we have extracted all of the English text's we ran them through the Spacy NLP pipeline. For more details on how we processed the text using the Spacy pipeline see the [./spacy_processing folder](./spacy_processing). For details on how the English 1890's texts were processed see [./HEC_Processing/1890_files/spacy_processing](./HEC_Processing/1890_files/spacy_processing). 
+
+The processed texts are not stored in this repository, they are stored on the luna drive at the following file path: `/mnt/luna/projects/lexi_1890/alt_1890_english_books_spacy_output`.
